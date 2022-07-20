@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "antd/dist/antd.min.css";
+
+import MainLayout from "./layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./container/Home";
+import Room from "./container/Room/Room";
+import RoomDetail from "./container/Room/RoomDetail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainLayout>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/home" element={<Home></Home>}></Route>
+            <Route path="/room" element={<Room></Room>}></Route>
+            <Route
+              path="/room/detail/:id"
+              element={<RoomDetail></RoomDetail>}
+            ></Route>
+          </Routes>
+        </BrowserRouter>
+      </MainLayout>
+    </>
   );
 }
 
